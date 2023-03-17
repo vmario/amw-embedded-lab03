@@ -34,12 +34,12 @@ TARGETDIR = bin
 INCLUDES = -I.
 LIBS = -lm
 CFLAGS = -mmcu=$(MCU_TARGET)
-CFLAGS += -MD -MP -MF $(DEPDIR)/$(@F).d
+CFLAGS += -MD -MP -MF $(DEPDIR)/$(basename $(@F)).d
 CFLAGS += -Wa,-adhlns=$(<:%.c=$(OBJDIR)/%.lst)
 CFLAGS += -std=c99 -Wall -Wundef -Wextra -pedantic -Wstrict-prototypes
 CFLAGS += -Os -flto
 CXXFLAGS = -mmcu=$(MCU_TARGET)
-CXXFLAGS += -MD -MP -MF $(DEPDIR)/$(@F).d
+CXXFLAGS += -MD -MP -MF $(DEPDIR)/$(basename $(@F)).d
 CXXFLAGS += -Wa,-adhlns=$(<:%.cpp=$(OBJDIR)/%.lst)
 CXXFLAGS += -std=c++14 -Wall -Wundef -Wextra -pedantic
 CXXFLAGS += -Os -flto -fno-exceptions
@@ -48,10 +48,10 @@ LDFLAGS += -Wl,-Map=$(TARGET).map,--cref
 LDFLAGS += -Os -flto
 DEFS = -DF_CPU=$(F_CPU)ul
 
-SRCS = main.cpp gpio.cpp heartBit.cpp
+SRCS = main.cpp gpio.cpp
 OBJS = $(addprefix $(OBJDIR)/,$(SRCS:.cpp=.o))
 DEPS = $(addprefix $(DEPDIR)/,$(SRCS:.cpp=.d))
-TARGET = $(TARGETDIR)/laboratory01
+TARGET = $(TARGETDIR)/laboratory03
 
 all: sizebefore build sizeafter
 
@@ -84,7 +84,7 @@ $(OBJDIR):
 $(DEPDIR):
 	$(MKDIR) $(DEPDIR)
 
--include $(shell MKDIR $(DEPDIR) 2>/dev/null) $(DEPS)
+-include $(DEPS)
 
 clean:
 	$(RM) $(DEPS)
