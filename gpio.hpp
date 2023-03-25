@@ -8,6 +8,8 @@
 
 #pragma once
 
+#include <avr/io.h>
+
 /**
  * Numery pinów powiązane z LED-ami.
  */
