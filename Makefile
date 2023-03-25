@@ -48,7 +48,7 @@ LDFLAGS += -Wl,-Map=$(TARGET).map,--cref
 LDFLAGS += -Os -flto
 DEFS = -DF_CPU=$(F_CPU)ul
 
-SRCS = main.cpp gpio.cpp
+SRCS = main.cpp gpio.cpp pwm.cpp
 OBJS = $(addprefix $(OBJDIR)/,$(SRCS:.cpp=.o))
 DEPS = $(addprefix $(DEPDIR)/,$(SRCS:.cpp=.d))
 TARGET = $(TARGETDIR)/laboratory03
