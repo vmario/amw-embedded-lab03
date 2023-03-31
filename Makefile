@@ -3,8 +3,8 @@
 MCU_TARGET_ATmega32A = atmega32a
 MCU_TARGET_ATmega1284P = atmega1284p
 
-FUSES_ATmega32A = -U hfuse:w:0xd9:m -U lfuse:w:0xef:m
-FUSES_ATmega1284P = -U hfuse:w:0xd9:m -U lfuse:w:0xef:m -U efuse:w:0xff:m
+FUSES_ATmega32A = -U hfuse:w:0xd9:m -U lfuse:w:0xe4:m
+FUSES_ATmega1284P = -U hfuse:w:0xd9:m -U lfuse:w:0xe2:m -U efuse:w:0xff:m
 
 MCU_TARGET = ${MCU_TARGET_${CONFIGURATION}}
 F_CPU = 11059200
